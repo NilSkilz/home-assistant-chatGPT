@@ -1,0 +1,19 @@
+{
+    "schema_version": "v1",
+    "name_for_human": "Home Assistant Plugin",
+    "name_for_model": "home_assistant",
+    "description_for_human": "Plugin for querying and controlling smart home devices via Home Assistant.",
+    "description_for_model": "Plugin for querying and controlling smart home devices via Home Assistant. When using this plugin only use the data returned by the plugin. Do not make up any demo data or mutate the data in any way.",
+    "auth": {
+        "type": "user_http",
+        "authorization_type": "bearer"
+    },
+    "api": {
+        "type": "openapi",
+        "url": "/api/chatgpt/openapi.json",
+        "is_user_authenticated": "false"
+    },
+    "logo_url": "/local/icon.png",
+    "contact_email": "rob_stokes@me.com",
+    "legal_info_url": "https://www.example.com/legal"
+}

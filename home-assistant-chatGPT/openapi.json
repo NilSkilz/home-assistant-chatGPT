@@ -1,0 +1,226 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "Home Assistant Plugin",
+        "description": "A plugin that allows the user to control smart home devices via Home Assistant.",
+        "version": "v1"
+    },
+    "paths": {
+        "/api/chatgpt/states/light": {
+            "get": {
+                "operationId": "getLights",
+                "summary": "Get the list of all light entities and their states",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "entity_id": {
+                                                "type": "string"
+                                            },
+                                            "state": {
+                                                "type": "string"
+                                            },
+                                            "attributes": {
+                                                "type": "object"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/chatgpt/states/switch": {
+            "get": {
+                "operationId": "getSwitches",
+                "summary": "Get the list of all switch entities and their states",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "entity_id": {
+                                                "type": "string"
+                                            },
+                                            "state": {
+                                                "type": "string"
+                                            },
+                                            "attributes": {
+                                                "type": "object"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/chatgpt/states/person": {
+            "get": {
+                "operationId": "getPersons",
+                "summary": "Get the list of all person entities and their states",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "entity_id": {
+                                                "type": "string"
+                                            },
+                                            "state": {
+                                                "type": "string"
+                                            },
+                                            "attributes": {
+                                                "type": "object"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/chatgpt/states/climate": {
+            "get": {
+                "operationId": "getClimates",
+                "summary": "Get the list of all climate entities and their states",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "entity_id": {
+                                                "type": "string"
+                                            },
+                                            "state": {
+                                                "type": "string"
+                                            },
+                                            "attributes": {
+                                                "type": "object"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/history/period/{start_time}": {
+            "get": {
+                "operationId": "getHistory",
+                "summary": "Get the history of an entity, with the dates that the state was changed, and the state that it was changed to",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "entity_id": {
+                                                "type": "string"
+                                            },
+                                            "state": {
+                                                "type": "string"
+                                            },
+                                            "last_changed": {
+                                                "type": "string",
+                                                "description": "The timestamp the state changed to this value",
+                                                "format": "timestamp"
+                                            },
+                                            "attributes": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "current_temperature": {
+                                                        "type": "string",
+                                                        "description": "The termperature at the last_changed time"
+                                                    },
+                                                    "temperature": {
+                                                        "type": "string",
+                                                        "description": "The temperature the thermostat is set at"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "filter_entity_id",
+                        "description": "The entitys whose history we want to be returned",
+                        "in": "query",
+                        "required": true,
+                        "deprecated": false,
+                        "allowEmptyValue": false,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "description": "The entity ID of the history to be returned"
+                            }
+                        }
+                    },
+                    {
+                        "name": "start_time",
+                        "description": "The start time for the history to fetch",
+                        "in": "path",
+                        "deprecated": false,
+                        "required": true,
+                        "allowEmptyValue": false,
+                        "schema": {
+                            "type": "string",
+                            "description": "The start time in the following format: YYYY-MM-DDThh:mm:ssTZD"
+                        }
+                    },
+                    {
+                        "name": "end_time",
+                        "description": "The end time for the history to fetch",
+                        "in": "path",
+                        "deprecated": false,
+                        "required": true,
+                        "allowEmptyValue": false,
+                        "schema": {
+                            "type": "string",
+                            "description": "The end time in the following format: YYYY-MM-DDThh:mm:ssTZD"
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}
