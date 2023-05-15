@@ -134,6 +134,38 @@
                 }
             }
         },
+        "/api/chatgpt/states/sensor": {
+            "get": {
+                "operationId": "setSensors",
+                "summary": "Get the list of all sensor entities and their states",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "entity_id": {
+                                                "type": "string"
+                                            },
+                                            "state": {
+                                                "type": "string"
+                                            },
+                                            "attributes": {
+                                                "type": "object"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/api/history/period/{start_time}": {
             "get": {
                 "operationId": "getHistory",
