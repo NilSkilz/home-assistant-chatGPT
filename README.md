@@ -25,8 +25,11 @@ to configuration.yml
 
 
 From ChatGPT, make sure GPT-4 is selected, and in the plugin store click "Develop your own plugin"
+
 Enter the url of your home assistant instance (i.e.  home-assistant.myhouse.com)
+
 When prompted, enter your LLAT.
+
 Ask it some questions!
 
 
@@ -46,4 +49,5 @@ The plugin can communicate with the /history API endpoint to get access to an en
 
 ### Controling devices
 They are currently read-only.
+
 Using ChatGPT to control devices is possible, and POST requests will be implemented in future, but it is very slow at the moment, and so would not be used for real-time control.
