@@ -22,3 +22,28 @@ add
 ```chat_gpt:``` 
 
 to configuration.yml
+
+
+From ChatGPT, make sure GPT-4 is selected, and in the plugin store click "Develop your own plugin"
+Enter the url of your home assistant instance (i.e.  home-assistant.myhouse.com)
+When prompted, enter your LLAT.
+Ask it some questions!
+
+
+## Current Limitations / TODO
+The current Home Assistant REST API can not return a subset of entities. When returning all of them, this would overload ChatGPT. I therefore created an API endpoint to return just specific domains (lights, switches, sensors etc).
+This endpoint is located at /api/chatgpt/states/{domain}
+
+### Domains
+The currently exposed domains are:
+- Lights
+- Switches
+- Sensors
+- Climate
+
+### Capacity
+The plugin can communicate with the /history API endpoint to get access to an entities history. However, it's limited in the amount of information it can digest. If there are lots of changes (like electricity monitoring) it cannot process all of the information. 
+
+### Controling devices
+They are currently read-only.
+Using ChatGPT to control devices is possible, and POST requests will be implemented in future, but it is very slow at the moment, and so would not be used for real-time control.
